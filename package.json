@@ -1,7 +1,7 @@
 {
   "name": "eclair-ts",
   "version": "0.0.1",
-  "description": "",
+  "description": "A TypeScript client for interacting with eclair implementations of the Lightning Network.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
@@ -15,8 +15,15 @@
     "lint:fix": "eslint . --fix",
     "prepare": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "eclair",
+    "typescript",
+    "javascript",
+    "node",
+    "lightning",
+    "bitcoin"
+  ],
+  "author": "Marty Jones",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^14.14.21",
