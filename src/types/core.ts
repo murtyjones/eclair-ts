@@ -944,7 +944,7 @@ export type ChannelClosedWebSocketEvent = {
   closingType: "MutualClose" /* TODO: no doubt there are more types */;
 };
 
-export type WebSocketEvent =
+export type WebSocketEventData =
   | PaymentReceivedWebSocketEvent
   | PaymentSentWebSocketEvent
   | PaymentSettlingOnChainWebSocketEvent
