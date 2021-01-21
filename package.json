@@ -4,6 +4,9 @@
   "description": "A TypeScript client for interacting with eclair implementations of the Lightning Network.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "url": "https://github.com/murtyjones/eclair-ts"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
