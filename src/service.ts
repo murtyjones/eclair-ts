@@ -7,7 +7,9 @@ export class EclairTs {
 
   private request = async <T>(route: Route) => {
     const { url, headers } = this.options;
-    const fullUrl = `${url}${route}`;
+    const noProtocol = url.replace("https://", "").replace("http://", "");
+    // TODO: support https? Assuming eclair supports it
+    const fullUrl = `http://${noProtocol}${route}`;
     return (await axios.post(fullUrl, null, { headers })).data as T;
   };
 
