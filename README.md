@@ -28,7 +28,7 @@ const carolConfig = {
   const carol = new EclairTs(carolConfig);
 
   // You can make requests to the node directly:
-  const info = await eclairTs.getInfo();
+  const info = await carol.getInfo();
   console.log("info about this node:");
   console.log(info);
 
