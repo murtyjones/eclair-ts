@@ -1,8 +1,8 @@
 import axios from "axios";
 import WebSocket from "ws";
 import { Options } from "./types/config";
-import { GetInfoResponse, Route } from "./types/core";
-import { EclairWebSocket } from "./types/websocket";
+import * as T from "./types/core";
+import { EclairWebSocket, Route } from "./types/network";
 
 export class EclairTs {
   private socket?: EclairWebSocket;
@@ -12,15 +12,20 @@ export class EclairTs {
   constructor(private options: Options) {}
 
   getInfo = async () => {
-    return this.request<GetInfoResponse>(Route.GetInfo);
+    return this.request<T.GetInfoResponse>(Route.GetInfo);
   };
 
-  private request = async <T>(route: Route): Promise<T> => {
+  connect = async (options: T.ConnectRequest): Promise<T.ConnectResponse> => {
+    return this.request<T.ConnectResponse>(Route.Connect, options);
+  };
+
+  private request = async <T>(route: Route, body?: any): Promise<T> => {
     const { url, headers } = this.options;
     const urlWithoutProtocol = EclairTs.stripProtocol(url);
     // TODO: support https? Assuming eclair supports it
     const fullUrl = `http://${urlWithoutProtocol}${route}`;
-    return (await axios.post(fullUrl, null, { headers })).data as T;
+    const data = body ? body : null;
+    return (await axios.post(fullUrl, data, { headers })).data as T;
   };
 
   listen = (): EclairWebSocket => {

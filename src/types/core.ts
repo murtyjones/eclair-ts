@@ -44,50 +44,11 @@ export type GetInfoResponse = {
   instanceId: string;
 };
 
-export enum Route {
-  GetInfo = "/getinfo",
-  Connect = "/connect",
-  Disconnect = "/disconnect",
-  Open = "/open",
-  Close = "/close",
-  ForceClose = "/forceclose",
-  UpdateRelayFee = "/updaterelayfee",
-  Peers = "/peers",
-  Nodes = "/nodes",
-  AllChannels = "/allchannels",
-  AllUpdates = "/allupdates",
-  NetworkStats = "/networkstats",
-  CreateInvoice = "/createinvoice",
-  ParseInvoice = "/parseinvoice",
-  PayInvoice = "/payinvoice",
-  SendToNode = "/sendtonode",
-  SendToRoute = "/sendtoroute",
-  GetSentInfo = "/getsentinfo",
-  GetReceivedInfo = "/getreceivedinfo",
-  GetInvoice = "/getinvoice",
-  ListInvoices = "/listinvoices",
-  ListPendingInvoices = "/listpendinginvoices",
-  FindRoute = "/findroute",
-  FindRouteToNode = "/findroutetonode",
-  GetNewAddress = "/getnewaddress",
-  SendOnChain = "/sendonchain",
-  OnChainBalance = "/onchainbalance",
-  OnChainTransactions = "/onchaintransactions",
-  SignMessage = "/signmessage",
-  VerifyMessage = "/verifymessage",
-  Audit = "/audit",
-  NetworkFees = "/networkfees",
-  ChannelStats = "/channelstats",
-  UsableBalances = "/usablebalances",
-  Websocket = "/ws",
-}
-
 // eclair-cli connect --uri=<target_uri>
 export type ConnectViaURIRequest = {
   // The URI in format 'nodeId@host:port'
   uri: string;
 };
-export type ConnectViaURIResponse = string; // enum? `connected`, ???
 
 // eclair-cli connect --nodeId=<node_id> --host=<host>
 export type ConnectManuallyRequest = {
@@ -98,14 +59,19 @@ export type ConnectManuallyRequest = {
   // The port of the node (default: 9735)
   port?: number;
 };
-export type ConnectManuallyResponse = string; // enum? `connected`, ???
 
 // eclair-cli connect --nodeId=<nodeId>
 export type ConnectViaNodeIdRequest = {
   // The nodeId of the node you want to connect to
   nodeId: string;
 };
-export type ConnectViaNodeIdResponse = string; // enum? `connected`, ???
+
+export type ConnectRequest =
+  | ConnectViaURIRequest
+  | ConnectManuallyRequest
+  | ConnectManuallyRequest;
+
+export type ConnectResponse = string;
 
 // eclair-cli disconnect --nodeId=<nodeId>
 export type DisconnectRequest = {
