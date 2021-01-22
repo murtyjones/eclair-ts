@@ -1,8 +1,8 @@
 import axios from "axios";
 import WebSocket from "ws";
 import { Options } from "./types/config";
-import * as T from "./types/core";
-import { EclairWebSocket, Route } from "./types/network";
+import * as T from "./types/eclair-v0.5.0/core";
+import { EclairWebSocket, Route } from "./types/eclair-v0.5.0/network";
 
 export class EclairTs {
   private socket?: EclairWebSocket;
